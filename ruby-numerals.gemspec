@@ -1,11 +1,10 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'ruby/numerals/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "ruby-numerals"
-  spec.version       = Ruby::Numerals::VERSION
+  spec.version       = "0.1.0"
   spec.authors       = ["Nandor Biro"]
   spec.email         = ["nandeej@gmail.com"]
 

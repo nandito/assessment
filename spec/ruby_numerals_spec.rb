@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe 'RubyNumerals' do
-
   before do
     @test = RubyNumerals.new
   end
@@ -39,35 +38,35 @@ describe 'RubyNumerals' do
   end
 
   it 'converts four digit number to text' do
-    expect(@test.four_digit_to_text(1111)).to eq('eleven hundred and eleven')
-    expect(@test.four_digit_to_text(2465)).to eq('twenty-four hundred and sixty-five')
-    expect(@test.four_digit_to_text(9999)).to eq('ninety-nine hundred and ninety-nine')
+    expect(@test.four_digit_to_text(1_111)).to eq('eleven hundred and eleven')
+    expect(@test.four_digit_to_text(2_465)).to eq('twenty-four hundred and sixty-five')
+    expect(@test.four_digit_to_text(9_999)).to eq('ninety-nine hundred and ninety-nine')
   end
 
   it 'handles thousands without hundreds specially' do
-    expect(@test.four_digit_to_text(2001)).to eq('two thousand and one')
-    expect(@test.four_digit_to_text(3032)).to eq('three thousand and thirty-two')
-    expect(@test.four_digit_to_text(4000)).to eq('four thousand')
+    expect(@test.four_digit_to_text(2_001)).to eq('two thousand and one')
+    expect(@test.four_digit_to_text(3_032)).to eq('three thousand and thirty-two')
+    expect(@test.four_digit_to_text(4_000)).to eq('four thousand')
   end
 
   it 'handles numbers under one million' do
-    expect(@test.six_digit_to_text(40000)).to eq('forty thousand')
-    expect(@test.six_digit_to_text(40011)).to eq('forty thousand and eleven')
-    expect(@test.six_digit_to_text(41000)).to eq('forty-one thousand')
-    expect(@test.six_digit_to_text(56300)).to eq('fifty-six thousand and three hundred')
-    expect(@test.six_digit_to_text(99999)).to eq('ninety-nine thousand and nine hundred and ninety-nine')
-    expect(@test.six_digit_to_text(100000)).to eq('one hundred thousand')
-    expect(@test.six_digit_to_text(555444)).to eq('five hundred and fifty-five thousand and four hundred and forty-four')
-    expect(@test.six_digit_to_text(999999)).to eq('nine hundred and ninety-nine thousand and nine hundred and ninety-nine')
+    expect(@test.six_digit_to_text(40_000)).to eq('forty thousand')
+    expect(@test.six_digit_to_text(40_011)).to eq('forty thousand and eleven')
+    expect(@test.six_digit_to_text(41_000)).to eq('forty-one thousand')
+    expect(@test.six_digit_to_text(56_300)).to eq('fifty-six thousand and three hundred')
+    expect(@test.six_digit_to_text(99_999)).to eq('ninety-nine thousand and nine hundred and ninety-nine')
+    expect(@test.six_digit_to_text(100_000)).to eq('one hundred thousand')
+    expect(@test.six_digit_to_text(555_444)).to eq('five hundred and fifty-five thousand and four hundred and forty-four')
+    expect(@test.six_digit_to_text(999_999)).to eq('nine hundred and ninety-nine thousand and nine hundred and ninety-nine')
   end
 
   it 'handles numbers above one million' do
-    expect(@test.eight_digit_to_text(1000000)).to eq('one million')
-    expect(@test.eight_digit_to_text(99000000)).to eq('ninety-nine million')
-    expect(@test.eight_digit_to_text(100000000)).to eq('one hundred million')
-    expect(@test.eight_digit_to_text(5000000000)).to eq('five thousand million')
-    expect(@test.eight_digit_to_text(1100025)).to eq('one million and one hundred thousand and twenty-five')
-    expect(@test.eight_digit_to_text(893421056)).to eq('eight hundred and ninety-three million and four hundred and twenty-one thousand and fifty-six')
+    expect(@test.eight_digit_to_text(1_000_000)).to eq('one million')
+    expect(@test.eight_digit_to_text(99_000_000)).to eq('ninety-nine million')
+    expect(@test.eight_digit_to_text(100_000_000)).to eq('one hundred million')
+    expect(@test.eight_digit_to_text(5_000_000_000)).to eq('five thousand million')
+    expect(@test.eight_digit_to_text(1_100_025)).to eq('one million and one hundred thousand and twenty-five')
+    expect(@test.eight_digit_to_text(893_421_056)).to eq('eight hundred and ninety-three million and four hundred and twenty-one thousand and fifty-six')
   end
 
   it 'let the user know if given value is not a convertible number' do
@@ -75,7 +74,7 @@ describe 'RubyNumerals' do
   end
 
   it 'let the user know if given value is too high to convert' do
-    expect(@test.number_to_string(999999999)).to eq('Given number is too high.')
+    expect(@test.number_to_string(999_999_999)).to eq('Given number is too high.')
   end
 
   it 'converts any length of numbers using one method' do
@@ -86,12 +85,12 @@ describe 'RubyNumerals' do
     expect(@test.number_to_string(100)).to eq('one hundred')
     expect(@test.number_to_string(500)).to eq('five hundred')
     expect(@test.number_to_string(687)).to eq('six hundred and eighty-seven')
-    expect(@test.number_to_string(1000)).to eq('one thousand')
-    expect(@test.number_to_string(7020)).to eq('seven thousand and twenty')
-    expect(@test.number_to_string(9998)).to eq('ninety-nine hundred and ninety-eight')
-    expect(@test.number_to_string(20000)).to eq('twenty thousand')
-    expect(@test.number_to_string(555444)).to eq('five hundred and fifty-five thousand and four hundred and forty-four')
-    expect(@test.number_to_string(1000000)).to eq('one million')
-    expect(@test.number_to_string(893421056)).to eq('eight hundred and ninety-three million and four hundred and twenty-one thousand and fifty-six')
+    expect(@test.number_to_string(1_000)).to eq('one thousand')
+    expect(@test.number_to_string(7_020)).to eq('seven thousand and twenty')
+    expect(@test.number_to_string(9_998)).to eq('ninety-nine hundred and ninety-eight')
+    expect(@test.number_to_string(20_000)).to eq('twenty thousand')
+    expect(@test.number_to_string(555_444)).to eq('five hundred and fifty-five thousand and four hundred and forty-four')
+    expect(@test.number_to_string(1_000_000)).to eq('one million')
+    expect(@test.number_to_string(893_421_056)).to eq('eight hundred and ninety-three million and four hundred and twenty-one thousand and fifty-six')
   end
 end
