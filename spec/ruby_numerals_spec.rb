@@ -29,11 +29,23 @@ describe 'RubyNumerals' do
   end
 
   it 'converts three digit number to text' do
-    expect(@test.three_digit_to_text(999)).to eq('nine hundred ninety-nine')
-    expect(@test.three_digit_to_text(875)).to eq('eight hundred seventy-five')
-    expect(@test.three_digit_to_text(101)).to eq('one hundred one')
-    expect(@test.three_digit_to_text(110)).to eq('one hundred ten')
-    expect(@test.three_digit_to_text(100)).to eq('one hundred')
-    expect(@test.three_digit_to_text(200)).to eq('two hundred')
+    expect(@test.four_digit_to_text(999)).to eq('nine hundred and ninety-nine')
+    expect(@test.four_digit_to_text(875)).to eq('eight hundred and seventy-five')
+    expect(@test.four_digit_to_text(101)).to eq('one hundred and one')
+    expect(@test.four_digit_to_text(110)).to eq('one hundred and ten')
+    expect(@test.four_digit_to_text(100)).to eq('one hundred')
+    expect(@test.four_digit_to_text(200)).to eq('two hundred')
+  end
+
+  it 'converts four digit number to text' do
+    expect(@test.four_digit_to_text(1111)).to eq('eleven hundred and eleven')
+    expect(@test.four_digit_to_text(2465)).to eq('twenty-four hundred and sixty-five')
+    expect(@test.four_digit_to_text(9999)).to eq('ninety-nine hundred and ninety-nine')
+  end
+
+  it 'handles thousands without hundreds specially' do
+    expect(@test.four_digit_to_text(2001)).to eq('two thousand and one')
+    expect(@test.four_digit_to_text(3032)).to eq('three thousand and thirty-two')
+    expect(@test.four_digit_to_text(4000)).to eq('four thousand')
   end
 end

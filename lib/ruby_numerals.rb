@@ -30,7 +30,8 @@ class RubyNumerals
         70 => 'seventy',
         80 => 'eighty',
         90 => 'ninety',
-        100 => 'hundred'
+        100 => 'hundred',
+        1000 => 'thousand'
     }
   end
 
@@ -46,18 +47,22 @@ class RubyNumerals
     else
       last_digit = number%10
       teens = (number-last_digit)
+      
       "#{wordlist[teens]}-#{wordlist[last_digit]}"
     end
   end
 
-  def three_digit_to_text(number)
+  def four_digit_to_text(number)
     wordlist = words
 
+    # Do not show 'zero' if there are no teens. If there are teens, show them as strings
     teens = number%100
-    teens == 0 ? teens_text = '' : teens_text = " #{two_digit_to_text(teens)}"
+    teens == 0 ? teens_text = '' : teens_text = " and #{two_digit_to_text(teens)}"
+
+    # Check if 'thousand' or 'hundred' should be shown
     hundreds = number/100
+    hundreds%10 == 0 ? hundreds_text = "#{wordlist[hundreds/10]} thousand" : hundreds_text = "#{two_digit_to_text(hundreds)} hundred"
 
-    "#{wordlist[hundreds]} hundred#{teens_text}"
+    "#{hundreds_text}#{teens_text}"
   end
-
 end
