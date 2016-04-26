@@ -70,6 +70,7 @@ describe 'RubyNumerals' do
   end
 
   it 'converts any length of numbers using one method' do
+    expect(@test.number_to_string(0)).to eq('zero')
     expect(@test.number_to_string(5)).to eq('five')
     expect(@test.number_to_string(15)).to eq('fifteen')
     expect(@test.number_to_string(22)).to eq('twenty-two')

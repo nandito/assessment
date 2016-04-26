@@ -96,7 +96,7 @@ class RubyNumerals
     if number.class == Fixnum
 
       case
-        when number > 0 && number < 100
+        when number >= 0 && number < 100
           two_digit_to_text(number)
         when number > 99 && number < 10000
           four_digit_to_text(number)
