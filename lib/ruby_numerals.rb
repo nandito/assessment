@@ -29,7 +29,8 @@ class RubyNumerals
         60 => 'sixty',
         70 => 'seventy',
         80 => 'eighty',
-        90 => 'ninety'
+        90 => 'ninety',
+        100 => 'hundred'
     }
   end
 
@@ -47,6 +48,16 @@ class RubyNumerals
       teens = (number-last_digit)
       "#{wordlist[teens]}-#{wordlist[last_digit]}"
     end
+  end
+
+  def three_digit_to_text(number)
+    wordlist = words
+
+    teens = number%100
+    teens == 0 ? teens_text = '' : teens_text = " #{two_digit_to_text(teens)}"
+    hundreds = number/100
+
+    "#{wordlist[hundreds]} hundred#{teens_text}"
   end
 
 end
