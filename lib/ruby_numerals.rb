@@ -12,8 +12,41 @@ class RubyNumerals
         7 => 'seven',
         8 => 'eight',
         9 => 'nine',
-        10 => 'ten'
+        10 => 'ten',
+        11 => 'eleven',
+        12 => 'twelve',
+        13 => 'thirteen',
+        14 => 'fourteen',
+        15 => 'fifteen',
+        16 => 'sixteen',
+        17 => 'seventeen',
+        18 => 'eighteen',
+        19 => 'nineteen',
+        20 => 'twenty',
+        30 => 'thirty',
+        40 => 'forty',
+        50 => 'fifty',
+        60 => 'sixty',
+        70 => 'seventy',
+        80 => 'eighty',
+        90 => 'ninety'
     }
+  end
+
+  def one_digit_to_text(number)
+    wordlist = words
+    wordlist[number]
+  end
+
+  def two_digit_to_text(number)
+    wordlist = words
+    if number < 21
+      wordlist[number]
+    else
+      last_digit = number%10
+      teens = (number-last_digit)
+      "#{wordlist[teens]}-#{wordlist[last_digit]}"
+    end
   end
 
 end
