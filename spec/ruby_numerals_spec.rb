@@ -61,11 +61,20 @@ describe 'RubyNumerals' do
     expect(@test.six_digit_to_text(999999)).to eq('nine hundred and ninety-nine thousand and nine hundred and ninety-nine')
   end
 
-  it 'let\'s the user know if given value is not a convertable number' do
+  it 'handles numbers above one million' do
+    expect(@test.eight_digit_to_text(1000000)).to eq('one million')
+    expect(@test.eight_digit_to_text(99000000)).to eq('ninety-nine million')
+    expect(@test.eight_digit_to_text(100000000)).to eq('one hundred million')
+    expect(@test.eight_digit_to_text(5000000000)).to eq('five thousand million')
+    expect(@test.eight_digit_to_text(1100025)).to eq('one million and one hundred thousand and twenty-five')
+    expect(@test.eight_digit_to_text(893421056)).to eq('eight hundred and ninety-three million and four hundred and twenty-one thousand and fifty-six')
+  end
+
+  it 'let the user know if given value is not a convertible number' do
     expect(@test.number_to_string('test text')).to eq('Given value is not a convertible number. (Actual: String, Expected: Fixnum)')
   end
 
-  it 'let\'s the user know if given value is too high to convert' do
+  it 'let the user know if given value is too high to convert' do
     expect(@test.number_to_string(999999999)).to eq('Given number is too high.')
   end
 
@@ -74,6 +83,7 @@ describe 'RubyNumerals' do
     expect(@test.number_to_string(5)).to eq('five')
     expect(@test.number_to_string(15)).to eq('fifteen')
     expect(@test.number_to_string(22)).to eq('twenty-two')
+    expect(@test.number_to_string(100)).to eq('one hundred')
     expect(@test.number_to_string(500)).to eq('five hundred')
     expect(@test.number_to_string(687)).to eq('six hundred and eighty-seven')
     expect(@test.number_to_string(1000)).to eq('one thousand')
@@ -81,5 +91,7 @@ describe 'RubyNumerals' do
     expect(@test.number_to_string(9998)).to eq('ninety-nine hundred and ninety-eight')
     expect(@test.number_to_string(20000)).to eq('twenty thousand')
     expect(@test.number_to_string(555444)).to eq('five hundred and fifty-five thousand and four hundred and forty-four')
+    expect(@test.number_to_string(1000000)).to eq('one million')
+    expect(@test.number_to_string(893421056)).to eq('eight hundred and ninety-three million and four hundred and twenty-one thousand and fifty-six')
   end
 end

@@ -1,3 +1,4 @@
+require 'logger'
 class RubyNumerals
 
   def words
@@ -81,7 +82,7 @@ class RubyNumerals
       hundreds_text= ''
     else
 
-      # Check if there are more than 2 digits of hundreds_text and use four_digit_to_text if there are
+      # Check if there are more than 2 digits of hundreds and use four_digit_to_text if there are
       if hundreds > 99
         hundreds_text = " and #{four_digit_to_text(hundreds)}"
       else
@@ -90,6 +91,28 @@ class RubyNumerals
     end
 
     "#{thousands_text}#{hundreds_text}"
+  end
+
+  def eight_digit_to_text(number)
+    millions = number/1000000
+    under_million = number - millions*1000000
+
+    # Check if there are more than 2 digits of millions and use four_digit_to_text if there are
+    if millions > 99
+      millions_text = "#{four_digit_to_text(millions)} million"
+    else
+      millions_text = "#{two_digit_to_text(millions)} million"
+    end
+
+    # Check if there are more than 2 digits of thousands and use four_digit_to_text if there are
+    if under_million == 0
+      under_million_text = ''
+    else
+      under_million_text = " and #{six_digit_to_text(under_million)}"
+    end
+
+    "#{millions_text}#{under_million_text}"
+
   end
 
   def number_to_string(number)
@@ -102,6 +125,8 @@ class RubyNumerals
           four_digit_to_text(number)
         when number > 9999 && number < 1000000
           six_digit_to_text(number)
+        when number > 999999 && number < 999999999
+          eight_digit_to_text(number)
         else
           'Given number is too high.'
       end
