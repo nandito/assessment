@@ -5,10 +5,6 @@ describe 'RubyNumerals' do
     @test = RubyNumerals.new
   end
 
-  it 'returns words array' do
-    expect(@test.words).to include(5 => 'five')
-  end
-
   it 'converts one digit number to text' do
     expect(@test.two_digit_to_text(0)).to eq('zero')
     expect(@test.two_digit_to_text(5)).to eq('five')
@@ -70,7 +66,7 @@ describe 'RubyNumerals' do
   end
 
   it 'let the user know if given value is not a convertible number' do
-    expect(@test.number_to_string('test text')).to eq('Given value is not a convertible number. (Actual: String, Expected: Fixnum)')
+    expect(@test.number_to_string('test text')).to eq('This value cannot be converted. Expect: Fixnum, Actual: String')
   end
 
   it 'let the user know if given value is too high to convert' do

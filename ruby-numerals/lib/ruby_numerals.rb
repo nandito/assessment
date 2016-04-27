@@ -1,6 +1,5 @@
 class RubyNumerals
-  def words
-    {
+  WORDS = {
       0 => 'zero',
       1 => 'one',
       2 => 'two',
@@ -29,11 +28,10 @@ class RubyNumerals
       70 => 'seventy',
       80 => 'eighty',
       90 => 'ninety'
-    }
-  end
+  }
 
   def two_digit_to_text(number)
-    wordlist = words
+    wordlist = WORDS
     if number < 21
       wordlist[number]
     else
