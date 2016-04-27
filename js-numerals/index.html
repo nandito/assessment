@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>js-numerals</title>
+	<link rel="stylesheet" href="styles/style.css" />
+	<!-- Material Design fonts -->
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	<!-- Bootstrap Material Design -->
+	<link rel="stylesheet" type="text/css" href="dist/css/bootstrap-material-design.css">
+	<link rel="stylesheet" type="text/css" href="dist/css/ripples.min.css">
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+	<script type="text/javascript" src="dist/js/material.min.js"></script>
+	<script type="text/javascript" src="dist/js/ripples.min.js"></script>
+	<script type="text/javascript" src="lib/numeral.js"></script>
+	<script type="text/javascript">
+	$.material.init()
+	</script>
+</head>
+<body>
+	<div id="header-panel"></div>
+	<div id="main-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 card-container">
+					<div class="card">
+						<h3>Input</h3>
+						<form class="form-horizontal" onsubmit="numeral()">
+							<div class="form-group">
+							  <label for="inputNumber" class="col-xs-4 control-label">Number</label>
+							  <div class="col-xs-8">
+								<input class="form-control" id="inputNumber" type="text">
+							  </div>
+							</div>
+							<div class="form-group">
+							  <div class="col-xs-8 col-xs-offset-4">
+								<button type="submit" class="btn btn-primary">Submit</button>
+							  </div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6 card-container">
+					<div class="card">
+						<h3>Output</h3>
+						<p>result goes here...</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

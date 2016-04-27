@@ -1,0 +1,23 @@
+#header-panel{
+	display:block;
+	height: 6em;
+	background-color: grey;
+}
+
+#main-content{
+	display: block;
+	position: absolute;
+	top: 3em;
+	margin-left: 15px;
+	margin-right: 15px;
+	left: 0;
+	right: 0;
+}
+
+.card-container{
+	padding-top: 1em;
+}
+
+.card-container .card{
+	padding: 0 15px;
+}
