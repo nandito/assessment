@@ -10,10 +10,8 @@ describe('numeral.js', function(){
 		document.getElementById = jasmine.createSpy('HTML Element').and.returnValue(inputElement);
 		console.log(document.getElementById);
 		
-		var testMethod = numeral();
+		expect(numeral()).toBe('');
 		expect(document.getElementById).toHaveBeenCalled();
-		
-		expect(testMethod).toBe('');
 	});
 	
 	it('should return two digit number as text', function(){

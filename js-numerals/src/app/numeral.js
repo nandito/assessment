@@ -30,7 +30,47 @@ var words = {
 };
 
 function numeral(){
-	var inputNumber = document.getElementById("inputNumber").value;
+	var inputNumber, parsedInput, resultElement;
+	
+	inputNumber = document.getElementById("inputNumber").value;
+	resultElement = document.getElementById("result");
+	errorElement = document.getElementById("error");
+	parsedInput = parseInt(inputNumber);
+	
+	if (isNaN(parsedInput)){
+		showError('The given value cannot be converted.');
+	}
+	else {
+		switch (true) {
+		  case (parsedInput >= 0 && parsedInput < 100):
+			showValue(twoDigitsToText(parsedInput));
+			break;
+		  case (parsedInput > 99 && parsedInput < 10000):
+			showValue(fourDigitsToText(parsedInput));
+			break;
+		  case (parsedInput > 9999 && parsedInput < 1000000):
+			showValue(sixDigitsToText(parsedInput));
+			break;
+		  case (parsedInput > 999999 && parsedInput < 999999999):
+			showValue(eightDigitsToText(parsedInput));
+			break;
+		  default:
+			showError('The given number is too high.');
+		}
+	};
+	
+	function showValue(value){
+		resultElement.innerHTML = value;
+		resultElement.style.display = 'block';
+		errorElement.style.display = 'none';
+	};
+
+	function showError(error){
+		errorElement.innerHTML = error;
+		errorElement.style.display = 'block';
+		resultElement.style.display = 'none';
+	};
+	
 	return inputNumber;
 };
 
