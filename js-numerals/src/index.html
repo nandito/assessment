@@ -18,14 +18,23 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
 	<script type="text/javascript" src="dist/js/material.min.js"></script>
 	<script type="text/javascript" src="dist/js/ripples.min.js"></script>
+
+	<!-- Custom JavaScript files -->
 	<script type="text/javascript" src="app/numeral.js"></script>
 	<script type="text/javascript">
 		$.material.init();
 		
 		$(function(){
 			$('form').submit(function () {
-				numeral();
-				$('#result-card').fadeIn(200);
+				var inputField = $('#inputNumber');
+
+				if(inputField.val() === ''){
+					$('.form-group').addClass('has-error');
+					inputField.focus();
+				} else {
+					numeral();
+					$('#result-card').fadeIn(200);
+				}
 				return false;
 			});
 		});
