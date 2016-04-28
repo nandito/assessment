@@ -1,3 +1,5 @@
+"use strict";
+
 var words = {
 	"0":"zero",
 	"1":"one",
@@ -30,12 +32,10 @@ var words = {
 };
 
 function numeral(){
-	var inputNumber, parsedInput, resultElement;
-	
-	inputNumber = document.getElementById("inputNumber").value;
-	resultElement = document.getElementById("result");
-	errorElement = document.getElementById("error");
-	parsedInput = parseInt(inputNumber);
+	var inputNumber = document.getElementById("inputNumber").value;
+	var resultElement = document.getElementById("result");
+	var errorElement = document.getElementById("error");
+	var parsedInput = parseInt(inputNumber);
 	
 	if (isNaN(parsedInput)){
 		showError('The given value cannot be converted.');
@@ -57,64 +57,66 @@ function numeral(){
 		  default:
 			showError('The given number is too high.');
 		}
-	};
+	}
 	
 	function showValue(value){
 		resultElement.innerHTML = value;
 		resultElement.style.display = 'block';
 		errorElement.style.display = 'none';
-	};
+	}
 
 	function showError(error){
 		errorElement.innerHTML = error;
 		errorElement.style.display = 'block';
 		resultElement.style.display = 'none';
-	};
+	}
 	
 	return inputNumber;
-};
+}
 
 function twoDigitsToText(number){
-	if (number < 21)
-		return(words[number])
+	if (number < 21) {
+		return(words[number]);
+	}
 	else {
 		var lastDigit, teens, lastDigitAsText, teensAsText;
 		
 		lastDigit = number % 10;
-		if (lastDigit === 0)
-			lastDigitAsText = ''
+		if (lastDigit === 0) {
+			lastDigitAsText = '';
+		}
 		else {
-			lastDigitAsText = '-' + words[lastDigit]
-		};
+			lastDigitAsText = '-' + words[lastDigit];
+		}
 		
 		teens = number - lastDigit;
 		teensAsText = words[teens];
 		
 		return teensAsText + lastDigitAsText;
 	}
-};
+}
 
 function fourDigitsToText(number){
 	var teens, hundreds, teensAsText, hundredsAsText;
 	
 	teens = number % 100;
-	if (teens === 0){
-		teensAsText = ''
+	if (teens === 0) {
+		teensAsText = '';
 	}
 	else {
-		teensAsText = ' and ' + twoDigitsToText(teens)
-	};
+		teensAsText = ' and ' + twoDigitsToText(teens);
+	}
 	
 	hundreds = (number-teens) / 100;
 	if (hundreds % 10 === 0){
-		hundredsAsText = twoDigitsToText(hundreds / 10) + ' thousand'
+		hundredsAsText = twoDigitsToText(hundreds / 10) + ' thousand';
 	}
 	else {
-		hundredsAsText = twoDigitsToText(hundreds) + ' hundred'
-	};
+		hundredsAsText = twoDigitsToText(hundreds) + ' hundred';
+	}
 	
 	return hundredsAsText + teensAsText;
-};
+}
 
 function sixDigitsToText(number){
 	var hundreds, thousands, hundredsAsText, thousandsAsTexts;
@@ -123,11 +125,11 @@ function sixDigitsToText(number){
 	thousands = (number - hundreds) / 1000;
 	
 	if (thousands > 99){
-		thousandsAsTexts = fourDigitsToText(thousands) + ' thousand'
+		thousandsAsTexts = fourDigitsToText(thousands) + ' thousand';
 	}
 	else {
-		thousandsAsTexts = twoDigitsToText(thousands) + ' thousand'
-	};
+		thousandsAsTexts = twoDigitsToText(thousands) + ' thousand';
+	}
 	
 	if (hundreds === 0){
 		hundredsAsText = '';
@@ -139,30 +141,30 @@ function sixDigitsToText(number){
 		else {
 			hundredsAsText = ' and ' + twoDigitsToText(hundreds);
 		}
-	};
+	}
 	
 	return thousandsAsTexts + hundredsAsText;
-};
+}
 
 function eightDigitsToText(number){
 	var millions, underMillion, millionsAsText, underMillionAsText;
 	
-	underMillion = number % 1000000
+	underMillion = number % 1000000;
 	millions = (number - underMillion) / 1000000;
 	
 	if (millions > 99){
-		millionsAsText = fourDigitsToText(millions) + ' million'
+		millionsAsText = fourDigitsToText(millions) + ' million';
 	}
 	else {
-		millionsAsText = twoDigitsToText(millions) + ' million'
-	};
+		millionsAsText = twoDigitsToText(millions) + ' million';
+	}
 	
 	if (underMillion === 0){
 		underMillionAsText = '';
 	}
 	else {
 		underMillionAsText = ' and ' + sixDigitsToText(underMillion);
-	};
+	}
 	
 	return millionsAsText + underMillionAsText;
-};
+}
