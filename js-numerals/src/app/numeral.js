@@ -52,4 +52,26 @@ function twoDigitsToText(number){
 		
 		return teensAsText + lastDigitAsText;
 	}
-}
+};
+
+function fourDigitsToText(number){
+	var teens, hundreds, teensAsText, hundredsAsText;
+	
+	teens = number % 100;
+	if (teens === 0){
+		teensAsText = ''
+	}
+	else {
+		teensAsText = ' and ' + twoDigitsToText(teens)
+	};
+	
+	hundreds = (number-teens) / 100;
+	if (hundreds % 10 === 0){
+		hundredsAsText = twoDigitsToText(hundreds / 10) + ' thousand'
+	}
+	else {
+		hundredsAsText = twoDigitsToText(hundreds) + ' hundred'
+	};
+	
+	return hundredsAsText + teensAsText;
+};
