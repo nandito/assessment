@@ -123,13 +123,15 @@ class RubyNumerals
       # Use the proper method based on the given number
       # If the number is too high, return a message
       case
+      when number < 0
+          'Number should be positive!'
       when number >= 0 && number < 100
         two_digit_to_text(number)
       when number > 99 && number < 10_000
         four_digit_to_text(number)
       when number > 9_999 && number < 1_000_000
         six_digit_to_text(number)
-      when number > 999_999 && number < 999_999_999
+      when number > 999_999 && number < 1_000_000_000
         eight_digit_to_text(number)
       else
         'Given number is too high.'

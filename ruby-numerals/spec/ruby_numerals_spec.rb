@@ -70,10 +70,11 @@ describe 'RubyNumerals' do
   end
 
   it 'let the user know if given value is too high to convert' do
-    expect(@test.number_to_string(999_999_999)).to eq('Given number is too high.')
+    expect(@test.number_to_string(1_000_000_000)).to eq('Given number is too high.')
   end
 
   it 'converts any length of numbers using one method' do
+    expect(@test.number_to_string(-10)).to eq('Number should be positive!')
     expect(@test.number_to_string(0)).to eq('zero')
     expect(@test.number_to_string(5)).to eq('five')
     expect(@test.number_to_string(15)).to eq('fifteen')
