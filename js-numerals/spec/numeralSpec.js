@@ -1,5 +1,5 @@
-describe('numeral', function(){
-	var inputElement;
+describe('numeral.js', function(){
+	var inputElement, testNumber;
 
 	beforeEach(function() {
 		inputElement = document.createElement('input');
@@ -14,6 +14,16 @@ describe('numeral', function(){
 		expect(document.getElementById).toHaveBeenCalled();
 		
 		expect(testMethod).toBe('');
+	});
+	
+	it('should return two digit number as text', function(){
+		expect(twoDigitsToText(0)).toBe('zero');
+		expect(twoDigitsToText(5)).toBe('five');
+		expect(twoDigitsToText(15)).toBe('fifteen');
+		expect(twoDigitsToText(20)).toBe('twenty');
+		expect(twoDigitsToText(21)).toBe('twenty-one');
+		expect(twoDigitsToText(50)).toBe('fifty');
+		expect(twoDigitsToText(88)).toBe('eighty-eight');
 	});
 	
 });
