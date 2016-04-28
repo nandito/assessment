@@ -79,8 +79,8 @@ function fourDigitsToText(number){
 function sixDigitsToText(number){
 	var hundreds, thousands, hundredsAsText, thousandsAsTexts;
 	
-	thousands = (number - (number % 1000)) / 1000;
 	hundreds = number % 1000;
+	thousands = (number - hundreds) / 1000;
 	
 	if (thousands > 99){
 		thousandsAsTexts = fourDigitsToText(thousands) + ' thousand'
@@ -102,4 +102,27 @@ function sixDigitsToText(number){
 	};
 	
 	return thousandsAsTexts + hundredsAsText;
+};
+
+function eightDigitsToText(number){
+	var millions, underMillion, millionsAsText, underMillionAsText;
+	
+	underMillion = number % 1000000
+	millions = (number - underMillion) / 1000000;
+	
+	if (millions > 99){
+		millionsAsText = fourDigitsToText(millions) + ' million'
+	}
+	else {
+		millionsAsText = twoDigitsToText(millions) + ' million'
+	};
+	
+	if (underMillion === 0){
+		underMillionAsText = '';
+	}
+	else {
+		underMillionAsText = ' and ' + sixDigitsToText(underMillion);
+	};
+	
+	return millionsAsText + underMillionAsText;
 };

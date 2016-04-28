@@ -43,4 +43,10 @@ describe('numeral.js', function(){
 		expect(sixDigitsToText(654010)).toBe('six hundred and fifty-four thousand and ten');
 		expect(sixDigitsToText(999999)).toBe('nine hundred and ninety-nine thousand and nine hundred and ninety-nine');
 	});
+	
+	it('should return eight digit number as text', function(){
+		expect(eightDigitsToText(1000000)).toBe('one million');
+		expect(eightDigitsToText(60000000)).toBe('sixty million');
+		expect(eightDigitsToText(234567890)).toBe('two hundred and thirty-four million and five hundred and sixty-seven thousand and eight hundred and ninety');
+	});
 });
