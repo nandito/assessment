@@ -36,4 +36,11 @@ describe('numeral.js', function(){
 		expect(fourDigitsToText(2222)).toBe('twenty-two hundred and twenty-two');
 	});
 	
+	it('should return six digit number as text', function(){
+		expect(sixDigitsToText(10000)).toBe('ten thousand');
+		expect(sixDigitsToText(23442)).toBe('twenty-three thousand and four hundred and forty-two');
+		expect(sixDigitsToText(200000)).toBe('two hundred thousand');
+		expect(sixDigitsToText(654010)).toBe('six hundred and fifty-four thousand and ten');
+		expect(sixDigitsToText(999999)).toBe('nine hundred and ninety-nine thousand and nine hundred and ninety-nine');
+	});
 });

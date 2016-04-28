@@ -75,3 +75,31 @@ function fourDigitsToText(number){
 	
 	return hundredsAsText + teensAsText;
 };
+
+function sixDigitsToText(number){
+	var hundreds, thousands, hundredsAsText, thousandsAsTexts;
+	
+	thousands = (number - (number % 1000)) / 1000;
+	hundreds = number % 1000;
+	
+	if (thousands > 99){
+		thousandsAsTexts = fourDigitsToText(thousands) + ' thousand'
+	}
+	else {
+		thousandsAsTexts = twoDigitsToText(thousands) + ' thousand'
+	};
+	
+	if (hundreds === 0){
+		hundredsAsText = '';
+	}
+	else {
+		if (hundreds > 99){
+			hundredsAsText = ' and ' + fourDigitsToText(hundreds);
+		}
+		else {
+			hundredsAsText = ' and ' + twoDigitsToText(hundreds);
+		}
+	};
+	
+	return thousandsAsTexts + hundredsAsText;
+};
